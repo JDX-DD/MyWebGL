@@ -5,10 +5,10 @@
 <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
 
 <script type="text/javascript" src="glMatrix-0.9.5.min.js"></script>
-
+<!--Fragment Shader is called for each pixel-->
 <script id="shader-fs" type="x-shader/x-fragment">
     precision mediump float;
-
+    //This variable is matched from the vColor of the vertex shader
     varying vec4 vColor;
 
     void main(void) {
@@ -16,6 +16,7 @@
     }
 </script>
 
+<!--Vertex shader is called for each vertex-->
 <script id="shader-vs" type="x-shader/x-vertex">
     attribute vec3 aVertexPosition;
     attribute vec4 aVertexColor;
@@ -27,6 +28,7 @@
 
     void main(void) {
         gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+        //We set the color here which is passed to the fragment shader
         vColor = aVertexColor;
     }
 </script>
